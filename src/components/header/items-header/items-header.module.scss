@@ -10,6 +10,10 @@
         padding: 15px 5px;
         font-weight: 900;
     }
+
+    @media (max-width: 750px) {
+        display: none;
+    }
 }
 
 .current {
