@@ -1,0 +1,27 @@
+.ItemMenu {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-self: end;
+    width: 100%;
+    a {
+        text-decoration: none;
+        font-size: 25px;
+        padding: 15px 5px;
+        font-weight: 900;
+    }
+}
+
+.current {
+    color: #ed1b2f;
+    &:hover {
+        color: #231F20;
+    }
+}
+
+.text {
+    color: #231F20;
+        &:hover {
+        color: #ed1b2f;
+    }
+}

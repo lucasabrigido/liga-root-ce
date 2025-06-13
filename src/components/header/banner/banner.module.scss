@@ -1,0 +1,32 @@
+.banner {
+    position: relative;
+    padding-top: 10px;
+    > img {
+        width: 100%!important;
+        height: 280px!important;
+    }
+    > svg {
+        position: absolute;
+        bottom: 0px;
+    }
+
+    path {
+        fill: #ffffff
+    }
+
+    > label {
+        font-size: 60px;
+        color: #ffffff;
+        font-weight: 900;
+        position: absolute;
+        left: 30px;
+        bottom: 40px;
+        text-align: center;
+
+          text-shadow:
+            -1px -1px 0 black,
+            1px -1px 0 black,
+            -1px  1px 0 black,
+            1px  1px 0 black;
+    } 
+}

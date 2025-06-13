@@ -1,0 +1,35 @@
+.SectionRedirect {
+    display: flex;
+    flex-direction: row;
+
+    > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: end;
+        margin-right: 15px;
+    }
+
+    > div > a {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        > img {
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    > div > div {
+        > a {
+            font-style: 17px;
+            padding: 0px 0px 0px 15px;
+            color: #231F2099;
+            font-weight: 400;
+            font-style: normal;
+            text-decoration: none;
+            margin-top: 15px;
+        }
+    }
+}
