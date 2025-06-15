@@ -1,14 +1,19 @@
+'use client';
+
 import Image from 'next/image';
-import { cookies } from 'next/headers';
 import Banner from '@assets/images/banner.jpg';
 import styles from './banner.module.scss';
 import { ItemsMenu } from '@/utils/constants';
+import { usePathname } from 'next/navigation';
 
-const BannerComponent = async () => {
-    const cookieStore = await cookies();
-    const currentPath = cookieStore.get('current-path')?.value;
+const BannerComponent = () => {
+    const currentPath = usePathname();
 
     const find = ItemsMenu.find(item => item.path === currentPath);
+
+    if (!find?.renderBanner || !find) {
+        return undefined;
+    }
 
     return (
         <div className={styles.banner}>
