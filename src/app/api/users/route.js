@@ -17,7 +17,7 @@ export async function POST(req) {
         //     user: await service.create(data, false),
         // });
 
-        return NextResponse.redirect(`${constants.baseUrl}/login?e=${encodeURIComponent(JSON.stringify({success: true}))}`);
+        return NextResponse.redirect(`${constants.baseUrl}/login`);
 
     } catch (error) {
         return NextResponse.redirect(`${constants.baseUrl}/error?e=${encodeURIComponent(error.message)}`);
