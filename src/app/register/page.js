@@ -2,6 +2,7 @@ import InputLabel from '@components/server-side/input-label';
 import DataLabel from '@components/date-label';
 import styles from './styles.module.scss';
 import Button from '@/components/server-side/button';
+import MyDatePicker from '@/components/date-picker';
 
 export default function Register() {
   return (
@@ -29,7 +30,12 @@ export default function Register() {
                 name='nickname'
                 required={true}
             />
-            <DataLabel
+            {/* <DataLabel
+                placeholder='Data de Nascimento'
+                name='birthdate'
+                required={true}
+            /> */}
+            <MyDatePicker
                 placeholder='Data de Nascimento'
                 name='birthdate'
                 required={true}

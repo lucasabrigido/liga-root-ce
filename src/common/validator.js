@@ -28,6 +28,7 @@ export async function validateRequest(
 
     if (!result.success) {
         const formattedErrors = result.error.format();
+        console.log('formattedErrors: ', JSON.stringify({error: formattedErrors, data}, null, 2))
         throw new Error(JSON.stringify({error: formattedErrors}, null, 2));
     }
 
