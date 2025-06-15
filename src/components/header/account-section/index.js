@@ -8,7 +8,7 @@ const AccountSection = () => {
             <div>
                 <div>
                     <a
-                        href='https://ludopedia.com.br'
+                        href='https://ludopedia.com.br/jogo/root'
                         target='_blank'
                     >
                         Ludopedia

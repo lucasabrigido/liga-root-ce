@@ -1,0 +1,29 @@
+'use client';
+
+import { useState } from 'react';
+import styles from './date-label.module.scss';
+
+const DateLabel = ({text = '', placeholder, name, required, ...rest}) => {
+    const [value, setValue] = useState('');
+    const [type, setType] = useState('text');
+    return (
+        <div className={styles.input}>
+            <label>
+                {text}
+                <input
+                    type={type}
+                    placeholder={placeholder}
+                    name={name}
+                    required={required}
+                    onFocus={() => setType('date')}
+                    onBlur={() => setType('text')}
+                    onChange={(e) => setValue(e.target.value)}
+                    value={value}
+                    {...rest}
+                />
+            </label>
+        </div>
+    );
+};
+
+export default DateLabel;

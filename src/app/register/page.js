@@ -1,4 +1,5 @@
 import InputLabel from '@components/server-side/input-label';
+import DataLabel from '@components/date-label';
 import styles from './styles.module.scss';
 import Button from '@/components/server-side/button';
 
@@ -28,9 +29,8 @@ export default function Register() {
                 name='nickname'
                 required={true}
             />
-            <InputLabel
+            <DataLabel
                 placeholder='Data de Nascimento'
-                type='date'
                 name='birthdate'
                 required={true}
             />
