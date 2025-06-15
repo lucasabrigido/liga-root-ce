@@ -12,12 +12,7 @@ export async function POST(req) {
         const data = await validateRequest(req, UserSchema, 'body');
         await service.create(data, false)
 
-        // return NextResponse.json({
-        //     success: true,
-        //     user: await service.create(data, false),
-        // });
-
-        return NextResponse.redirect(`${constants.baseUrl}/login`);
+        return NextResponse.redirect(`${constants.baseUrl}/login`, 303);
 
     } catch (error) {
         return NextResponse.redirect(`${constants.baseUrl}/error?e=${encodeURIComponent(error.message)}`);
