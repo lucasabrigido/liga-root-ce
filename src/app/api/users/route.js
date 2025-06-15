@@ -1,5 +1,25 @@
-import { NextResponse } from 'next/server'
+import { NextResponse } from 'next/server';
+import { validateRequest } from '@common/validator';
+import { UserSchema } from './models';
+import constants from '@utils/constants';
+import Service from './service';
 
-export async function GET() {
-    return NextResponse.json({name: 'brugido'})
+
+const service = Service.config(constants);
+
+export async function POST(req) {
+    try {
+        const data = await validateRequest(req, UserSchema, 'body');
+        await service.create(data, false)
+
+        // return NextResponse.json({
+        //     success: true,
+        //     user: await service.create(data, false),
+        // });
+
+        return NextResponse.redirect(`${constants.baseUrl}/login?e=${encodeURIComponent(JSON.stringify({success: true}))}`);
+
+    } catch (error) {
+        return NextResponse.redirect(`${constants.baseUrl}/error?e=${encodeURIComponent(error.message)}`);
+    }
 }

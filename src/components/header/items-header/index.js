@@ -1,12 +1,14 @@
+'use client';
+
+import { usePathname } from "next/navigation";
 import Link from 'next/link';
-import { cookies } from 'next/headers';
 import { ItemsMenu } from '@utils/constants';
 
 import styles from './items-header.module.scss';
 
-const ItemsHeader = async () => {
-    const cookieStore = await cookies();
-    const currentPath = cookieStore.get('current-path')?.value;
+const ItemsHeader = () => {
+    const currentPath = usePathname();
+    console.log('currentPath', currentPath);
     return (
         <div className={styles.ItemMenu} >
             {
