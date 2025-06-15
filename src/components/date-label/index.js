@@ -1,16 +1,25 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './date-label.module.scss';
 
 const DateLabel = ({text = '', placeholder, name, required, ...rest}) => {
+    const ref = useRef(); 
     const [value, setValue] = useState('');
     const [type, setType] = useState('text');
+
+    useEffect(() => {
+        if (ref.current && type === 'date') {
+            ref.current.focus();
+        }
+    }, [type]);
+
     return (
         <div className={styles.input}>
             <label>
                 {text}
                 <input
+                    ref={ref}
                     type={type}
                     placeholder={placeholder}
                     name={name}
