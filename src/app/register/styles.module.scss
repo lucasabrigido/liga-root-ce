@@ -26,5 +26,14 @@
         gap: 11px;
         max-width: 400px;
         width: 100%;
+
+        @media (max-width: 330px) {
+            max-width: 200px;
+        }
+
+        @media (min-width: 331px) and (max-width: 420px) {
+            max-width: 300px;
+        }
     }
+
 }

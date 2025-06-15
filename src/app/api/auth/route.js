@@ -22,9 +22,9 @@ export async function POST(req) {
             secure: process.env.NODE_ENV === 'production',
         });
 
-        return NextResponse.redirect(`${constants.baseUrl}/home?e=${encodeURIComponent(JSON.stringify(encodeURIComponent(token)))}`);
+        return NextResponse.redirect(`${constants.baseUrl}/home?e=${encodeURIComponent(JSON.stringify(encodeURIComponent(token)))}`, 303);
 
     } catch (error) {
-        return NextResponse.redirect(`${constants.baseUrl}/error?e=${encodeURIComponent(error.message)}`);
+        return NextResponse.redirect(`${constants.baseUrl}/error?e=${encodeURIComponent(error.message)}`, 303);
     }
 }

@@ -15,6 +15,6 @@ export async function POST(req) {
         return NextResponse.redirect(`${constants.baseUrl}/login`, 303);
 
     } catch (error) {
-        return NextResponse.redirect(`${constants.baseUrl}/error?e=${encodeURIComponent(error.message)}`);
+        return NextResponse.redirect(`${constants.baseUrl}/error?e=${encodeURIComponent(error.message)}`, 303);
     }
 }
