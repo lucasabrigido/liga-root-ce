@@ -19,6 +19,7 @@ const DateLabel = ({text = '', placeholder, name, required, ...rest}) => {
             <label>
                 {text}
                 <input
+                    key={type}
                     ref={ref}
                     type={type}
                     placeholder={placeholder}
