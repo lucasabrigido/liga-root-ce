@@ -1,9 +1,11 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { useMemo } from 'react';
+import { useMemo, Suspense } from 'react';
 
-export default function ErrorPage() {
+export const dynamic = 'force-dynamic';
+
+function ErrorMessages() {
   const searchParams = useSearchParams();
   const errorParam = searchParams.get('e');
 
@@ -13,7 +15,6 @@ export default function ErrorPage() {
     try {
       const decoded = decodeURIComponent(errorParam);
       let errorData = JSON.parse(decoded).error;
-      // errorData tem estrutura: { _errors: [], firstName: {_errors: [...]}, ... }
 
       return Object.entries(errorData)
         .filter(([key]) => key !== '_errors')
@@ -27,15 +28,23 @@ export default function ErrorPage() {
   }, [errorParam]);
 
   return (
+    <ul>
+      {errorMessages.map(({ field, messages }, idx) => (
+        <li key={idx}>
+          <strong>{field}:</strong> {messages.join(', ')}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export default function ErrorPage() {
+  return (
     <div>
       <h1>Erros no cadastro</h1>
-      <ul>
-        {errorMessages.map(({ field, messages }, idx) => (
-          <li key={idx}>
-            <strong>{field}:</strong> {messages.join(', ')}
-          </li>
-        ))}
-      </ul>
+      <Suspense fallback={<p>Carregando erros...</p>}>
+        <ErrorMessages />
+      </Suspense>
       <a href="/register">Voltar ao formulário</a>
     </div>
   );
