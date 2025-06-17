@@ -1,0 +1,15 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    width: 100%;
+
+    @media (max-width: 330px) {
+        max-width: 200px;
+    }
+
+    @media (min-width: 331px) and (max-width: 420px) {
+        max-width: 300px;
+    }
+}

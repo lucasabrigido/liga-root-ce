@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Banner from '@assets/images/banner.jpg';
 import styles from './banner.module.scss';
-import { ItemsMenu } from '@/utils/constants';
+import { ItemsMenu } from '@utils/constants';
 import { usePathname } from 'next/navigation';
 
 const BannerComponent = () => {

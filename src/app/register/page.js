@@ -1,8 +1,8 @@
 import InputLabel from '@components/server-side/input-label';
-import DataLabel from '@components/date-label';
+//import DataLabel from '@components/date-label';
 import styles from './styles.module.scss';
-import Button from '@/components/server-side/button';
-import MyDatePicker from '@/components/date-picker';
+import Button from '@components/server-side/button';
+import MyDatePicker from '@components/date-picker';
 
 export default function Register() {
   return (

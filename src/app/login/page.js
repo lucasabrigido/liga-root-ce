@@ -1,6 +1,6 @@
 import InputLabel from '@components/server-side/input-label';
 import styles from './styles.module.scss';
-import Button from '@/components/server-side/button';
+import Button from '@components/server-side/button';
 
 export default function Register() {
   return (

@@ -8,3 +8,18 @@
         font-weight: 100;
     }
 }
+
+.absolute {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    .errorSpan {
+        position: absolute;
+        font-size: 10px;
+        font-weight: 600;
+        color: var(--red-primary);
+        text-align: end;
+        bottom: -13px;
+        width: 100%;
+    }
+}

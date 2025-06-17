@@ -4,7 +4,7 @@ import AuthClient from '@common/authClient';
 
 import Repository from './repository';
 import UserRepository from '../users/repository';
-import { encodedError } from '@/utils/functions';
+import { encodedError } from '@utils/functions';
 
 class Service {
     /**

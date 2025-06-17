@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/*": ["./src/*"],
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
       "@common/*": ["./src/common/*"],
       "@utils/*": ["./src/utils/*"],
       "@migrates/*": ["./migrates/*"],
+      "@api/*": ["./src/app/api/*"],
+      "@modules/*": ["./src/modules/*"],
     }
   }
 }

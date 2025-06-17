@@ -4,7 +4,7 @@ import AuthClient from '@common/authClient';
 import { Scopes, UserStatus } from '@utils/constants';
 
 import Repository from './repository';
-import { encodedError } from '@/utils/functions';
+import { encodedError } from '@utils/functions';
 
 class Service {
     /**
@@ -58,6 +58,12 @@ class Service {
         await this.#repository.put(newUser);
 
         return id;
+    }
+
+    async listAllUsers () {
+        return {
+            users: await this.#repository.listAllUsers(),
+        }
     }
 
     constructor(repository, auth) {

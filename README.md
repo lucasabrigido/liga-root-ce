@@ -12,3 +12,9 @@ AWS_SECRET_ACCESS_KEY="fakeSecretAccessKey"
 
 //curl http://localhost:8000/
 // npx dynamodb-gui -p 8001
+
+//aws s3api put-public-access-block \
+  --bucket my-app-assets-root-boardgame-cdn \
+  --public-access-block-configuration "BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false" \
+  --region us-east-1 \
+  --profile root-dev

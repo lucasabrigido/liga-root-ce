@@ -1,5 +1,6 @@
 import Header from "@components/header";
 import "./globals.css";
+import MyApp from "./app";
 
 export const metadata = {
   title: "Liga ROOT CE",
@@ -10,9 +11,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pt">
       <body>
-        <Header/>
+        <Header />
         <div className='container-root'>
-          {children}
+          <MyApp>
+            {children}
+          </MyApp>
         </div>
       </body>
     </html>

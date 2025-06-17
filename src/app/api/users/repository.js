@@ -1,5 +1,6 @@
 import UsersTable from '@migrates/users.json';
 import DynamoClient from '@common/dynamoClient';
+import { UserStatus } from '../../../utils/constants';
 
 class Repository {
     /**
@@ -32,7 +33,7 @@ class Repository {
             Limit: 1,
         };
 
-        const {Items} = await this.#dc.query(params);
+        const { Items } = await this.#dc.query(params);
 
         return Items[0];
     }
@@ -48,7 +49,7 @@ class Repository {
             Limit: 1,
         };
 
-        const {Items} = await this.#dc.query(params);
+        const { Items } = await this.#dc.query(params);
 
         return Items[0];
     }
@@ -64,6 +65,36 @@ class Repository {
         return item;
     }
 
+    async listAllUsers() {
+        const params = {
+            TableName: this.#tableName,
+            FilterExpression: "#status = :createdStatus",
+            ProjectionExpression: "#id, nickname",
+            ExpressionAttributeNames: {
+                "#status": "status",
+                "#id": "id",
+            },
+            ExpressionAttributeValues: {
+                ":createdStatus": UserStatus.Created,
+            },
+        };
+
+        let allUsers = [];
+        let lastEvaluatedKey = null;
+
+        do {
+            if (lastEvaluatedKey) {
+                params.ExclusiveStartKey = lastEvaluatedKey;
+            }
+
+            const result = await this.#dc.scan(params);
+            allUsers = allUsers.concat(result.Items || []);
+            lastEvaluatedKey = result.LastEvaluatedKey;
+
+        } while (lastEvaluatedKey);
+
+        return allUsers;
+    }
 
     constructor(dc, tableName, indexes) {
         this.#dc = dc;
