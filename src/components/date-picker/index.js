@@ -10,7 +10,7 @@ import 'dayjs/locale/pt-br';
 
 dayjs.locale('pt-br');
 
-export default function BasicDatePicker({ name, placeholder, ...rest }) {
+export default function BasicDatePicker({ name, placeholder, error, ...rest }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -21,22 +21,25 @@ export default function BasicDatePicker({ name, placeholder, ...rest }) {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt-br">
-      <DatePicker
-        className={styles.datePicker}
-        format="DD/MM/YYYY"
-        {...rest}
-        slotProps={{
-          textField: {
-            variant: 'outlined',
-            InputLabelProps: { shrink: false },
-            inputProps: {
-              placeholder,
-              readOnly: false,
-              name,
+      <div className={styles.absolute}>
+        <DatePicker
+          className={styles.datePicker}
+          format="DD/MM/YYYY"
+          {...rest}
+          slotProps={{
+            textField: {
+              variant: 'outlined',
+              InputLabelProps: { shrink: false },
+              inputProps: {
+                placeholder,
+                readOnly: false,
+                name,
+              },
             },
-          },
-        }}
-      />
+          }}
+        />
+        {error && <span className={styles.errorSpan}>{error}</span>}
+      </div>
     </LocalizationProvider>
   );
 }

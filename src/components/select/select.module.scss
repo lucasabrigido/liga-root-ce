@@ -1,0 +1,24 @@
+.form {
+    margin: 0!important;
+    width: 100%!important;
+    background-color: #f3f3f3!important;
+    > div {
+        border-radius: 0px!important;
+    }
+
+    fieldset {
+        border: 1px solid #111;
+        border: none!important;
+    }
+
+    em {
+        font-family: "Titillium Web";
+        color: #111;
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    svg {
+        color: #111!important;
+    }
+}

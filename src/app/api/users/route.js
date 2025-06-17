@@ -18,3 +18,11 @@ export async function POST(req) {
         return NextResponse.redirect(`${constants.baseUrl}/error?e=${encodeURIComponent(error.message)}`, 303);
     }
 }
+
+export async function GET() {
+    try {
+        return NextResponse.json(await service.listAllUsers());
+    } catch (error) {
+        return NextResponse.redirect(`${constants.baseUrl}/error?e=${encodeURIComponent(error.message)}`, 303);
+    }
+}

@@ -1,6 +1,6 @@
 
 class UserClient {
-    constructor () {
+    constructor() {
         this._baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
     }
     async userInfo() {
@@ -8,6 +8,31 @@ class UserClient {
         if (!res.ok) throw new Error('Falha ao buscar usuários')
         return res.json()
     }
+
+    async allUsers() {
+        const res = await fetch('/api/users')
+        if (!res.ok) throw new Error('Falha ao buscar usuários')
+        return res.json()
+    }
+
+    async createGame(payload) {
+        const res = await fetch('/api/game', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+            throw new Error(data.message || JSON.stringify(data) || 'Erro desconhecido');
+        }
+
+        return data;
+    }
+
 
 }
 

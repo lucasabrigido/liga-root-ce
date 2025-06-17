@@ -14,7 +14,7 @@ export async function POST(req) {
         const data = await validateRequest(req, SchemaUserLogin, 'body');
         const token = await service.auth(data, req.headers);
 
-          await cookies().set('token', token.accessToken, {
+          (await cookies()).set('token', token.accessToken, {
             httpOnly: true,
             path: '/',
             maxAge: constants.authConfig.expiresIn,
