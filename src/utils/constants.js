@@ -19,17 +19,17 @@ export const ItemsMenu = [
         auth: true,
     },
     {
-        name: 'Inscricoes',
-        path: '/inscricoes',
+        name: 'Dashboard',
+        path: '/dashboard',
         renderBanner: true,
-        auth: false,
+        auth: true,
     },
-    // {
-    //     name: 'Auditoria',
-    //     path: '/audit',
-    //     renderBanner: true,
-    //     auth: false,
-    // },
+    {
+        name: 'Submeter game',
+        path: '/game-submission',
+        renderBanner: false,
+        auth: true,
+    },
     {
         name: 'Registro',
         path: '/register',
@@ -41,12 +41,6 @@ export const ItemsMenu = [
         path: '/login',
         renderBanner: false,
         auth: false,
-    },
-    {
-        name: 'Submeter game',
-        path: '/game-submission',
-        renderBanner: false,
-        auth: true,
     },
 ];
 
@@ -93,3 +87,8 @@ export const ROOT_FACTIONS = [
     { value: 'Contratados', id: 'HIRELINGS' },
     { value: 'Facção Personalizada', id: 'CUSTOM' },
 ];
+
+export const ROOT_FACTIONS_MAP = ROOT_FACTIONS.reduce((acc, faction) =>  {
+    acc[faction.id] = faction.value;
+    return acc;
+}, {});
