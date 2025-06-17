@@ -20,10 +20,7 @@ export async function POST(req) {
 
         return NextResponse.json(await service.create(data, payload.id));
     } catch (error) {
-        return NextResponse.redirect(
-            `${constants.baseUrl}/error?e=${encodeURIComponent(error.message)}`,
-            303
-        );
+        return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
 
@@ -31,9 +28,6 @@ export async function GET() {
     try {
         return NextResponse.json(await service.listStats());
     } catch (error) {
-        return NextResponse.redirect(
-            `${constants.baseUrl}/error?e=${encodeURIComponent(error.message)}`,
-            303
-        );
+        return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }

@@ -3,7 +3,6 @@
 import React from 'react';
 
 export const UserStatsTable = ({ data, stats }) => {
-    console.log('data, stats', data, stats)
   return (
     <div style={{ overflowX: 'auto' }}>
       <table style={{
