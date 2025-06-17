@@ -25,7 +25,7 @@ export const ItemsMenu = [
         auth: true,
     },
     {
-        name: 'Submeter game',
+        name: 'Submeter',
         path: '/game-submission',
         renderBanner: false,
         auth: true,
