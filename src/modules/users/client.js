@@ -34,14 +34,12 @@ class UserClient {
     }
 
     async listGames() {
-        const res = await fetch(`${this._baseUrl}/api/game`);
-        
-        if (!res.ok) {
-            return {};
-        }
-        
+        const res = await fetch('/api/game');
         const data = await res.json();
 
+        if (!res.ok) {
+            throw new Error(data.message || JSON.stringify(data) || 'Erro desconhecido');
+        }
 
         return data;
     }
