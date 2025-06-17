@@ -34,18 +34,14 @@ class UserClient {
     }
 
     async listGames() {
-        const res = await fetch(`${this._baseUrl}/api/game`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-
+        const res = await fetch(`${this._baseUrl}/api/game`);
+        
+        if (!res.ok) {
+            return {};
+        }
+        
         const data = await res.json();
 
-        if (!res.ok) {
-            throw new Error(data.message || JSON.stringify(data) || 'Erro desconhecido');
-        }
 
         return data;
     }

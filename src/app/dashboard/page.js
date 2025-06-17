@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 import { FactionPieChart } from './stats-faction';
 import { ROOT_FACTIONS_MAP } from '@utils/constants';
 
-export default function Register() {
+export default function Dashboard() {
     const stats = use(UserClient.listGames());
     
   return (
