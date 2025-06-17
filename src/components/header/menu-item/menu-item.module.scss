@@ -1,0 +1,16 @@
+.containerIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+    .iconMenu {
+        font-size: 2.2em;
+        cursor: pointer;
+        @media (min-width: 750px) {
+            display: none;
+        }
+        &:hover {
+            fill: var(--red-primary);
+        }
+    }
+}
