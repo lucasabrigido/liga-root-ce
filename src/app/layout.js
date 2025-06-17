@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
             <body>
                 <div className='body-div'>
                     <MenuLateral />
-                    <div>
+                    <div className='main' >
                         <Header />
                         <div className='container-root'>
                             <MyApp>

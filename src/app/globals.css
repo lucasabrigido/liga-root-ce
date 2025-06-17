@@ -31,6 +31,12 @@ button {
   border: none;
 }
 
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 #menu-lateral.active {
   min-width: 75%;
   width: 100%;
