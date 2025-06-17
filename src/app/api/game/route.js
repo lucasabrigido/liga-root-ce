@@ -1,4 +1,4 @@
-import cookie from 'cookie';
+import {parse} from 'cookie';
 import { NextResponse } from 'next/server';
 import { validateRequest } from '@common/validator';
 import { SchemaGameSubmission } from './models';
@@ -14,7 +14,7 @@ export async function POST(req) {
     try {
         const data = await validateRequest(req, SchemaGameSubmission, 'body');
         const cookies = req.headers.get('cookie');
-        const parsedCookies = cookie.parse(cookies || '');
+        const parsedCookies = parse(cookies || '');
         const token = parsedCookies.token;
         const payload = await auth.validateToken(token);
 
