@@ -16,7 +16,7 @@ class Service {
     #repository;
     #userRepository;
 
-    async create({ participants, images, ...rest }) {
+    async create({ participants, images, ...rest }, tokenId) {
         const now = new Date().toISOString();
         const id = uuid();
 
@@ -32,31 +32,64 @@ class Service {
                 points: game.points,
                 images: game.id === participants[0].id ? images : [],
                 faction: game.faction,
+                createdId: tokenId,
             });
         }
 
 
-        return {id};
+        return { id };
     }
 
-    async listPoints() {
+    async listStats() {
         const users = await this.#userRepository.listAllUsers();
         const games = await this.#repository.listAllGames()
 
-        const result = users.map(user => {
-            const totalPoints = games
-                .filter(game => game.userId === user.id)
-                .reduce((sum, game) => sum + game.points, 0);
-
-            return {
-                nickname: user.nickname,
-                totalPoints,
-            };
-        });
-
         return {
-            scores: result,
+            users: this.calcNickname(users),
+            totalGamesByUser: this.calcTotalGameByUser(games),
+            totalPointsByUser: this.calcTotalPointsByUser(games),
+            totalGamesByFaction: this.calcTotalGameByFaction(games),
         }
+    }
+
+    calcNickname(users) {
+        const nicknames = users.reduce((acc, user) => {
+            const { id, nickname } = user;
+            acc[id] = nickname;
+            return acc;
+        }, {});
+
+        return nicknames
+    }
+
+    calcTotalGameByUser(games) {
+        const totalGamesByUser = games.reduce((acc, game) => {
+            const { userId } = game;
+            acc[userId] = (acc[userId] || 0) + 1;
+            return acc;
+        }, {});
+
+        return totalGamesByUser
+    }
+
+    calcTotalPointsByUser(games) {
+        const totalPointsByUser = games.reduce((acc, game) => {
+            const { userId, points } = game;
+            acc[userId] = (acc[userId] || 0) + points;
+            return acc;
+        }, {});
+
+        return totalPointsByUser
+    }
+
+    calcTotalGameByFaction(games) {
+        const totalGamesByFaction = games.reduce((acc, game) => {
+            const { faction } = game;
+            acc[faction] = (acc[faction] || 0) + 1;
+            return acc;
+        }, {});
+
+        return totalGamesByFaction;
     }
     /**
      * 
