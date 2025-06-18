@@ -28,3 +28,14 @@ export const getErrorMessage = (error) => {
 export function encodedObj(obj) {
     return encodeURIComponent(JSON.stringify(obj));
 };
+
+export function drawNumbers() {
+  const numbers = new Set();
+
+  while (numbers.size < 6) {
+    const number = Math.floor(Math.random() * 12); // 0 to 11
+    numbers.add(number);
+  }
+
+  return Array.from(numbers);
+}

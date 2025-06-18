@@ -1,5 +1,6 @@
 'use client';
 
+import { v4 as uuid } from 'uuid';
 import SelectUser from '@components/select-user';
 import Select from '@components/select';
 import styles from './points.module.scss';
@@ -41,7 +42,7 @@ const Points = ({index, onChange, append, remove, total, error}) => {
                     index === total-1 ? (
                         <button
                             className={styles.add}
-                            onClick={() => append({ id: '', points: '' })}
+                            onClick={() => append({ id: '', points: '', internalId: uuid() })}
                         >
                             +
                         </button>

@@ -1,0 +1,35 @@
+.meaple {
+    position: absolute;
+    .containerInternal {
+        position: relative;
+        > img {
+            width: 25px;
+            height: 25px;
+        }
+    
+        img {
+            position: absolute;
+            &:nth-child(1) {
+                left: 0px;
+            }
+            &:nth-child(2) {
+                left: 10px;
+                z-index: 2;
+            }
+            &:nth-child(3) {
+                left: 20px;
+            }
+            &:nth-child(4) {
+                left: 10px;
+                bottom: -10px;
+            }
+        }
+    }
+    @media (max-width: 330px) {
+        transform: translateX(-180px);
+    }
+
+    @media (min-width: 331px) and (max-width: 420px) {
+        transform: translateX(-55px);
+    }
+}

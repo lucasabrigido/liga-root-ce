@@ -1,0 +1,13 @@
+.meaple {
+    position: absolute;
+    .containerInternal {
+        position: relative;
+        > img {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            left: 10px;
+            z-index: 2;
+        }
+    }
+}
