@@ -1,10 +1,12 @@
 import InputLabel from '@components/server-side/input-label';
 import styles from './styles.module.scss';
 import Button from '@components/server-side/button';
+import Notify from './notify';
 
-export default function Register() {
+export default function Login() {
   return (
     <div className={styles.page}>
+        <Notify/>
         <h1>
             Login
         </h1>

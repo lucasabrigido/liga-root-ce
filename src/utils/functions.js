@@ -24,3 +24,7 @@ export const getErrorMessage = (error) => {
 
     return 'Erro inesperado.';
 };
+
+export function encodedObj(obj) {
+    return encodeURIComponent(JSON.stringify(obj));
+};

@@ -18,3 +18,6 @@ AWS_SECRET_ACCESS_KEY="fakeSecretAccessKey"
   --public-access-block-configuration "BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false" \
   --region us-east-1 \
   --profile root-dev
+
+
+<!-- docker-compose up -d -->
