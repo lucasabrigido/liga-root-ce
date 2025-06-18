@@ -1,0 +1,12 @@
+.mapa {
+    position: relative;
+    > img {
+        max-width: 100%;
+        max-height: 355px;
+    }
+
+    @media (max-width: 420px) {
+        display: none;
+    }
+
+}

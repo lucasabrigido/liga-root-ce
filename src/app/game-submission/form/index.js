@@ -2,6 +2,7 @@
 import styles from './form.module.scss';
 
 import { toast } from 'sonner';
+import { v4 as uuid } from 'uuid';
 import CircularProgress from '@mui/material/CircularProgress';
 import Button from '@components/server-side/button';
 import MultiImageUploader from '@components/multi-image-uploader';
@@ -14,6 +15,7 @@ import Points from './points';
 import { useMutation } from '@tanstack/react-query';
 import UserClient from '@modules/users/client';
 import { getErrorMessage } from '@utils/functions';
+import Mapa from '@components/mapa-custom';
 
 export default function FormSubmission() {
 
@@ -24,6 +26,7 @@ export default function FormSubmission() {
         control,
         trigger,
         reset,
+        watch,
     } = useForm({
         resolver: zodResolver(SchemaGameSubmission),
         mode: 'onBlur',
@@ -31,7 +34,7 @@ export default function FormSubmission() {
             images: [],
             type: 'LOOSE',
             date: '',
-            participants: [{ id: '', points: '', faction: '' }],
+            participants: [{ id: '', points: '', faction: '', internalId: uuid() }],
         },
     });
 
@@ -68,7 +71,7 @@ export default function FormSubmission() {
     const onSubmit = async (data) => {
         const isValid = await trigger();
         if (isValid) {
-            mutate(data);
+            mutate({...data, participants: data.participants.map(({internalId, ...p}) => p)});
         }
     };
 
@@ -83,6 +86,7 @@ export default function FormSubmission() {
                     ? <CircularProgress />
                     : (
                         <>
+                            <Mapa participants={watch('participants')}/>
                             <DatePicker
                                 placeholder='Data do jogo'
                                 name='date'
@@ -96,7 +100,7 @@ export default function FormSubmission() {
                                     {...item}
                                     index={index}
                                     onChange={changeParticipant}
-                                    key={index}
+                                    key={item.internalId}
                                     append={append}
                                     remove={remove}
                                     total={participantFields.length}
