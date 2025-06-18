@@ -25,11 +25,17 @@
             }
         }
     }
-    @media (max-width: 330px) {
-        transform: translateX(-180px);
-    }
 
-    @media (min-width: 331px) and (max-width: 420px) {
-        transform: translateX(-55px);
-    }
+}
+
+@media (min-width: 421px) {
+  .scaled {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .notScaled {
+    display: none;
+  }
 }

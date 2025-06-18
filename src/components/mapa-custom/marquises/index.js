@@ -5,10 +5,10 @@ import styles from './marquises.module.scss';
 
 const len = '2px';
 
-const Marquises = ({ top, left, color }) => {
+const Marquises = ({ top, left, color, isScaled }) => {
     return (
         <div
-            className={styles.marquises}
+            className={`${styles.meaple} ${isScaled ? styles.scaled : styles.notScaled}`}
             style={{
                 top,
                 left,

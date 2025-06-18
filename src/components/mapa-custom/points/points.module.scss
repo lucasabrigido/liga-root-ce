@@ -7,3 +7,15 @@
         height: 20px;
     }
 }
+
+@media (min-width: 421px) {
+  .scaled {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .notScaled {
+    display: none;
+  }
+}
