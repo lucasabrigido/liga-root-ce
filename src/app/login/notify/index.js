@@ -17,7 +17,7 @@ const Notify = () => {
             }
         }
       }, [obj]);
-    return undefined;
+    return null;
 };
 
 export default Notify;
