@@ -57,6 +57,14 @@ const clareiras = [
         left: '24px',
     }
 ]
+
+const scaleFactor = 340 / 400;
+
+const scaledClareiras = clareiras.map(pos => ({
+    top: pos.top,
+    left: `${Math.round(parseInt(pos.left) * scaleFactor)}px`
+}));
+
 const numbers = drawNumbers();
 const Mapa = ({participants}) => {
     return (
@@ -72,9 +80,19 @@ const Mapa = ({participants}) => {
                             {...clareiras[numbers[index]]}
                             color={ROOT_FACTIONS_MAP_TOTAL[p.faction].color}
                         />
+                        <Component
+                            {...scaledClareiras[numbers[index]]}
+                            color={ROOT_FACTIONS_MAP_TOTAL[p.faction].color}
+                            isScaled={true}
+                        />
                         <Points
                             quadrant={p.points}
                             faction={ROOT_FACTIONS_MAP_TOTAL[p.faction]}
+                        />
+                        <Points
+                            quadrant={p.points}
+                            faction={ROOT_FACTIONS_MAP_TOTAL[p.faction]}
+                            isScaled={true}
                         />
                     </React.Fragment >
                 )

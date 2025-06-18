@@ -5,10 +5,10 @@ import styles from './maeples.module.scss';
 
 const len = '2px';
 
-const Guardians = ({ top, left, color }) => {
+const Guardians = ({ top, left, color, isScaled }) => {
     return (
         <div
-            className={styles.meaple}
+            className={`${styles.meaple} ${isScaled ? styles.scaled : styles.notScaled}`}
             style={{
                 top,
                 left,
