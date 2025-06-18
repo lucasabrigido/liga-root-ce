@@ -1,0 +1,32 @@
+.page {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+    > div {
+        display: flex;
+        flex-direction: column;
+        color: #000;
+        background-color: var(--green-primaty);
+        border-radius: 11px;
+
+        color: #000;
+        background-color: #58c456;
+        border-radius: 11px;
+        max-width: 650px;
+        margin-top: 17px;
+        > h1 {
+            text-align: center;
+            color: #fff;
+            font-weight: 800;
+            margin-bottom: 0px;
+            height: 25px;
+        }
+        > p {
+            padding: 20px;
+            color: #fff;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+    }
+}

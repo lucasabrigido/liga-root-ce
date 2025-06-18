@@ -45,7 +45,7 @@ export const SchemaGameSubmission = z.object({
                 .max(30, 'Os pontos não podem ser maiores que 30.'),
         })
     )
-        .min(2, 'É necessário pelo menos dois participantes.')
+        .min(1, 'É necessário pelo menos um participante.')
         .max(6, 'Máximo de 6 jogadores.')
         .superRefine((participants, ctx) => {
             const seenIds = new Map();

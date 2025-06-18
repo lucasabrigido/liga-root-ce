@@ -1,10 +1,16 @@
 import { NextResponse } from 'next/server';
 import constants, { ItemsMenu } from '@utils/constants';
 import AuthClient from '@common/authClient';
+import { encodedObj } from '@utils/functions';
 
 const allPathsAuth = ItemsMenu.filter(e => e.auth).map(e => e.path);
 
 const authClient = AuthClient.config(constants);
+
+const noAuth = encodedObj({
+    success: false,
+    text: 'você precisa se logar primeiro',
+});
 
 export async function middleware(req) {
 
@@ -15,7 +21,7 @@ export async function middleware(req) {
         const {valid} = await authClient.validateToken(token);
 
         if (!valid) {
-                const response = NextResponse.redirect(new URL('/login', req.url));
+                const response = NextResponse.redirect(new URL(`/login?obj=${noAuth}`, req.url));
                 response.cookies.delete('token');
                 return response;
         }
@@ -26,7 +32,7 @@ export async function middleware(req) {
         if (allPathsAuth.includes(pathname)) {
             const isAuth = req.cookies.get('token');
             if (!isAuth) {
-                return NextResponse.redirect(new URL('/login', req.url));
+                return NextResponse.redirect(new URL(`/login?obj=${noAuth}`, req.url));
             }
         }
         const response = NextResponse.next();
